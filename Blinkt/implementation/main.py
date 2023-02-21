@@ -4,7 +4,7 @@ from strip import Strip
 from hw_interface import clear, set_pixel, show
 
 NUM_LEDS = 8
-positions = [2.5, 3.5, 6.5]
+positions = [2.5, 3.5, 6.5] 
 deltas = [0.08, 0.06, -0.07]
 # Region test
 ids = [None] * 3
@@ -69,6 +69,3 @@ while (True):
             s.moveRegion(ids[i], positions[i])
     display()
     time.sleep_ms(50)
-
-while sm.tx_fifo() > 0:
-    pass

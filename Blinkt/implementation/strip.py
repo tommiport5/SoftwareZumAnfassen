@@ -39,7 +39,7 @@ class Strip:
         for [ipos, reg] in iter(self._regions.values()):
             la = reg.to_LedArray()
             for i in range(len(la)):
-                ti = (i + ipos - len(la)//2)%len(arr)
+                ti = (i + ipos - len(la)//2)%len(arr) 
                 # print(i, la[i], arr[ti])
                 arr[ti] = arr[ti].add(la[i])
                 # print(ti, arr[ti])
@@ -47,7 +47,7 @@ class Strip:
         return arr
     
     def to_uint32arr(self):
-        arr = [la.to_uint32() for la in self.complete()]
+        arr = [la.to_uint32() for la in self.complete()] 
         return arr
     
 
@@ -56,13 +56,4 @@ if __name__ == "__main__":
     id = s.newRegion(3.06, colspec="red")
     for x in s.to_uint32arr():
         print("0x%x" % x)
-##    s.removeRegion(id)
-##    print()
-##    id = s.newRegion(3.5, width=4, colspec="green")
-##    for x in s.to_uint32arr():
-##        print("0x%x" % x)
-##    print()
-##    id1 = s.newRegion(4.5, width=7, colspec="blue")
-##    for x in s.to_uint32arr():
-##        print("0x%x" % x)            
-##    print()
+

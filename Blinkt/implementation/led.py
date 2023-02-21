@@ -50,7 +50,7 @@ class LED:
             return True
         
     def copy(self):
-        return LED(self._cols,self._br)
+        return LED(self._cols,self._br, self._offset)
     
     # try to keep the numeric values in good range
     def _rescale(self):
