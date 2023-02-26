@@ -4,7 +4,7 @@ Software representation of the whole strip of LEDs
 """
 
 import math
-from led import LED, DEFAULT_BRIGHTNESS
+from led import LED
 from region import Region
 
 
@@ -13,15 +13,15 @@ class Strip:
         self._num = num
         self._regions = {}
         self._last = 0
-
+        
     # add a region and return its id
-    def newRegion(self, pos, width=3, colspec=None, br=DEFAULT_BRIGHTNESS):
+    def newRegion(self, pos, width=3, colspec=None):
         if pos < 0: raise ValueError
         (ifr, ipos) = math.modf(pos)
         if ipos >= self._num: raise ValueError
         id = self._last
         self._last += 1 # not reentrant, but we are only single threaded
-        self._regions.update({id: [int(ipos), Region(ifr, width=width, colspec=colspec, br=br)]})
+        self._regions.update({id: [int(ipos), Region(ifr, width=width, colspec=colspec)]})
         return id
 
     def moveRegion(self, id, pos):
@@ -31,6 +31,9 @@ class Strip:
         self._regions[id][1].move(ifr)
         self._regions[id][0] = int(ipos)
 
+    def multRegion(self, id, factor):
+        return self._regions[id][1].mult(factor)
+        
     def removeRegion(self, id):
         del self._regions[id]
 
@@ -45,15 +48,10 @@ class Strip:
                 # print(ti, arr[ti])
                 arr[ti]._rescale()
         return arr
-    
-    def to_uint32arr(self):
-        arr = [la.to_uint32() for la in self.complete()] 
-        return arr
-    
 
 if __name__ == "__main__":
     s = Strip(8)
     id = s.newRegion(3.06, colspec="red")
-    for x in s.to_uint32arr():
-        print("0x%x" % x)
+    for x in s.complete():
+        print(x)
 
