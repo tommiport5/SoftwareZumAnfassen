@@ -10,3 +10,6 @@ Ihr braucht aber keine Angst davor zu haben, einfache Dinge gehen auch beim git 
 ## Warum GitHub?
 Auch wieder ein "Gold Standard" in diesem Fall für OpenSource Projekte. Es stellt eine Plattform für kleine und grosse Teams zur Verfügung, um weltweit zusammenzuarbeiten. Die Übernahme durch Microsoft hat dieser Plattform anscheinend nicht geschadet.
 Vielleicht hat Microsoft die Kraft von Communities ja erkannt und bemüht sich so etwas wie gegenseitigen Respekt aufzubauen.
+
+## Repository Struktur
+Der main branch bleibt erst mal für Neueinsteiger erhalten. Er ist auch als Clip4 getagged. Der rework branch ist für Clip5.
